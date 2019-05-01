@@ -37,8 +37,9 @@ public class Apalancamiento {
 	}
 
 	private String getMargenContribucion() {
-		// TODO Auto-generated method stub
-		return null;
+		double ventas=Double.parseDouble(getVentas());
+		
+		return ventas-costoVariable + "";
 	}
 
 	private String getCostosVariables() {
