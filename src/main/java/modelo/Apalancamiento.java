@@ -36,17 +36,17 @@ public class Apalancamiento {
 		return estado.toString();
 	}
 
-	private String getMargenContribucion() {
+	public String getMargenContribucion() {
 		double ventas=Double.parseDouble(getVentas());
 		
-		return ventas-costoVariable + "";
+		return ventas-costoVariable*unidadesVendidas + "";
 	}
 
-	private String getCostosVariables() {
+	public String getCostosVariables() {
 		return costoVariable * unidadesVendidas + "";
 	}
 
-	private String getVentas() {
+	public String getVentas() {
 		return precioVenta * unidadesVendidas + "";
 	}
 
@@ -88,6 +88,7 @@ public class Apalancamiento {
 	}
 	
 	public String apOperativo() {
+		if(Double.parseDouble(utOperativa()) == 0) return 0+"";
 		return Double.parseDouble(getMargenContribucion())/Double.parseDouble(utOperativa())+"";
 	}
 
