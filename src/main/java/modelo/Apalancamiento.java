@@ -16,8 +16,8 @@ public class Apalancamiento {
 	}
 
 	public void simularAumentoVentas(double porcentaje) {
-		porcentaje /=100;
-		unidadesVendidas += (int)(unidadesVendidas*porcentaje);
+		porcentaje /= 100;
+		unidadesVendidas += (int) (unidadesVendidas * porcentaje);
 	}
 
 	public void actualizarInfo(double precioVenta, double costoVariable, double costoFijo, int unidadesVendidas) {
@@ -38,9 +38,9 @@ public class Apalancamiento {
 	}
 
 	public String getMargenContribucion() {
-		double ventas=Double.parseDouble(getVentas());
-		
-		return ventas-costoVariable*unidadesVendidas + "";
+		double ventas = Double.parseDouble(getVentas());
+
+		return ventas - costoVariable * unidadesVendidas + "";
 	}
 
 	public String getCostosVariables() {
@@ -82,16 +82,28 @@ public class Apalancamiento {
 	public void setUnidadesVendidas(int unidadesVendidas) {
 		this.unidadesVendidas = unidadesVendidas;
 	}
-	
+
 	public String utOperativa() {
-		double margen=Double.parseDouble(getMargenContribucion());
-		return margen-costoFijo+"";
-	}
-	
-	public String apOperativo() {
-		if(Double.parseDouble(utOperativa()) == 0) return 0+"";
-		return Double.parseDouble(getMargenContribucion())/Double.parseDouble(utOperativa())+"";
+		double margen = Double.parseDouble(getMargenContribucion());
+		return margen - costoFijo + "";
 	}
 
+	public double getPE() {
+		int PE = (int) ((costoFijo) / (precioVenta - costoVariable));
+		return PE < 0 ? 0 : PE;
+	}
+
+	public String apOperativo() {
+		if (Double.parseDouble(utOperativa()) == 0)
+			return 0 + "";
+		return Double.parseDouble(getMargenContribucion()) / Double.parseDouble(utOperativa()) + "";
+	}
+
+	public double apalancamiento(int ventas) {
+		if (precioVenta * ventas - costoVariable * ventas - costoFijo == 0)
+			return 0;
+		return Math.abs((precioVenta * ventas - costoVariable * ventas)
+				/ (precioVenta * ventas - costoVariable * ventas - costoFijo));
+	}
 
 }
