@@ -16,7 +16,8 @@ public class Apalancamiento {
 	}
 
 	public void simularAumentoVentas(double porcentaje) {
-
+		porcentaje /=100;
+		unidadesVendidas += (int)(unidadesVendidas*porcentaje);
 	}
 
 	public void actualizarInfo(double precioVenta, double costoVariable, double costoFijo, int unidadesVendidas) {
@@ -91,5 +92,6 @@ public class Apalancamiento {
 		if(Double.parseDouble(utOperativa()) == 0) return 0+"";
 		return Double.parseDouble(getMargenContribucion())/Double.parseDouble(utOperativa())+"";
 	}
+
 
 }

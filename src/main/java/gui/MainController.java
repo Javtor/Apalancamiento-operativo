@@ -108,6 +108,19 @@ public class MainController {
 
     @FXML
     void simular(ActionEvent event) {
-    	System.out.println("si");
+    	try {
+			double porcentaje = Double.parseDouble(txtAumentos.getText());
+			
+//			if(pv < 0 || can < 0 || cf < 0 || cv < 0) {
+//				throw new NumberFormatException();
+//			}
+			
+			ap.simularAumentoVentas(porcentaje);
+			txtCantidad.setText(ap.getUnidadesVendidas()+"");
+			updateUI();
+			
+		} catch(NumberFormatException e) {
+			numEx();
+		}
     }
 }
