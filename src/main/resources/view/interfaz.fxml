@@ -72,11 +72,11 @@
             <TextField fx:id="txtCantidad" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="txtFiijos" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="txtCV" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button fx:id="btnAct" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="94.0" text="Actualizar" textAlignment="JUSTIFY" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button fx:id="btnAct" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#actualizar" prefHeight="25.0" prefWidth="94.0" text="Actualizar" textAlignment="JUSTIFY" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Simulación" GridPane.rowIndex="6" />
             <Label text="\% Aumento ventas" GridPane.rowIndex="7" />
             <TextField fx:id="txtAumentos" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Button fx:id="btnSim" mnemonicParsing="false" text="Simular" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Button fx:id="btnSim" mnemonicParsing="false" onAction="#simular" text="Simular" GridPane.columnIndex="1" GridPane.rowIndex="8" />
          </children>
       </GridPane>
    </center>
