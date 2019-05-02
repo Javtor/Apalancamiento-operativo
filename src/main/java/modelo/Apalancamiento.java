@@ -81,5 +81,14 @@ public class Apalancamiento {
 	public void setUnidadesVendidas(int unidadesVendidas) {
 		this.unidadesVendidas = unidadesVendidas;
 	}
+	
+	public String utOperativa() {
+		double margen=Double.parseDouble(getMargenContribucion());
+		return margen-costoFijo+"";
+	}
+	
+	public String apOperativo() {
+		return Double.parseDouble(getMargenContribucion())/Double.parseDouble(utOperativa())+"";
+	}
 
 }
