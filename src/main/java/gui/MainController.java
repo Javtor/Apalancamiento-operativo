@@ -100,7 +100,7 @@ public class MainController {
 //        //populating the series with data
         int max = Math.max(ap.getUnidadesVendidas()+1, (int)(ap.getPE()*2));
         for (int i = 0; i <= max; i++) {
-        	if(i == ap.getPE()) continue;
+        	if((double)i == ap.getPE()) continue;
         	plot.getData().add(new XYChart.Data<Number, Number>(i, ap.apalancamiento(i)));
 		}
 //        for (XYChart.Data data : plot.getData()) {
@@ -115,12 +115,12 @@ public class MainController {
         XYChart.Series<Number, Number> actual = new XYChart.Series<Number, Number>();
         actual.setName("Punto actual");
         actual.getData().add(new XYChart.Data<Number, Number>(ventas, y));
-
-        chart.setCreateSymbols(false);
+//        chart.setCreateSymbols(false);
         
+       
         chart.getData().add(plot);
-        
         chart.getData().add(actual);
+       
         
         
                
@@ -131,7 +131,7 @@ public class MainController {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Error");
 		alert.setHeaderText(null);
-		alert.setContentText("Verifique que los datos sean numeros positivos y que la cantidad vendida sea entera");
+		alert.setContentText(msg);
 
 		alert.showAndWait();
 	}
@@ -169,18 +169,29 @@ public class MainController {
     void simular(ActionEvent event) {
     	try {
 			double porcentaje = Double.parseDouble(txtAumentos.getText());
-			
+			int inicial = ap.getUnidadesVendidas();
 //			if(pv < 0 || can < 0 || cf < 0 || cv < 0) {
 //				throw new NumberFormatException();
 //			}
 			
 			ap.simularAumentoVentas(porcentaje);
+			int fin = ap.getUnidadesVendidas();
 			txtCantidad.setText(ap.getUnidadesVendidas()+"");
 			updateUI();
 			updateChart();
+			showMessage(porcentaje, fin-inicial);
 			
 		} catch(NumberFormatException e) {
 			numEx("Verifique que los datos sean numeros positivos y que la cantidad vendida sea entera");
 		}
+    }
+    
+    private void showMessage(double porcentaje, int unidades) {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Simulacion");
+		alert.setHeaderText(null);
+		alert.setContentText("Las ventas aumentaron en "+unidades+" unidades (un "+porcentaje+" %).");
+
+		alert.showAndWait();
     }
 }

@@ -46,7 +46,7 @@
 							<archive>
 								<manifest>
 									<mainClass>
-										controller.Main
+										gui.Main
 									</mainClass>
 								</manifest>
 							</archive>
