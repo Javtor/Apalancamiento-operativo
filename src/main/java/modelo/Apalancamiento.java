@@ -89,7 +89,7 @@ public class Apalancamiento {
 	}
 
 	public double getPE() {
-		int PE = (int) ((costoFijo) / (precioVenta - costoVariable));
+		double PE =  ((costoFijo) / (precioVenta - costoVariable));
 		return PE < 0 ? 0 : PE;
 	}
 
